@@ -1,0 +1,32 @@
+{
+  "name": "blockly-esp",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write src/",
+    "logo": "npx pwa-asset-generator src/assets/logo.svg ./public \\ --icon-only \\ --favicon \\ --maskable true \\ --background \"#ffffff\""
+  },
+  "dependencies": {
+    "material-icons": "^1.13.14",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.12",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "daisyui": "^5.0.50",
+    "prettier": "3.6.2",
+    "tailwindcss": "^4.1.12",
+    "vite": "^7.0.6",
+    "vite-plugin-pwa": "^1.0.3",
+    "vite-plugin-vue-devtools": "^8.0.0"
+  }
+}
