@@ -2,3 +2,14 @@
 @plugin 'daisyui';
 
 @import 'material-icons/iconfont/material-icons.css';
+
+body {
+  font-family: Arial, sans-serif;
+}
+.blocklyScrollbarVertical[display='none'] {
+  display: none !important;
+}
+
+.blocklyScrollbarVertical[display='block'] {
+  display: block !important;
+}
