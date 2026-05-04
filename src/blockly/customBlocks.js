@@ -191,17 +191,17 @@ const blockDefinitions = {
     output: null,
     colour: 60,
   },
-  variables_create: {
+  variable_create: {
     type: 'VARIABLE_CREATE',
     tooltip: 'Erstellt eine Variable mit einem Typ, Namen und Wert.',
-    message0: '%{BKY_VARIABLES_CREATE_TITLE}',
+    message0: '%{BKY_VARIABLE_CREATE_TITLE}',
     args0: [
       {
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['%{BKY_VARIABLES_CREATE_TYPE_INT}', 'int'],
-          ['%{BKY_VARIABLES_CREATE_TYPE_BOOL}', 'bool'],
+          ['%{BKY_VARIABLE_CREATE_TYPE_INT}', 'int'],
+          ['%{BKY_VARIABLE_CREATE_TYPE_BOOL}', 'bool'],
         ],
       },
       {
@@ -218,29 +218,29 @@ const blockDefinitions = {
     nextStatement: null,
     colour: 330,
   },
-  variables_get: {
+  variable_get: {
     type: 'VARIABLE_GET',
     tooltip: 'Gibt den Wert einer Variable zurück.',
-    message0: '%{BKY_VARIABLES_GET_TITLE}',
+    message0: '%{BKY_VARIABLE_GET_TITLE}',
     args0: [
       {
         type: 'field_input',
         name: 'NAME',
-        text: '%{BKY_VARIABLES_DEFAULT_NAME}',
+        text: '%{BKY_VARIABLE_DEFAULT_NAME}',
       },
     ],
     output: null,
     colour: 330,
   },
-  variables_set: {
+  variable_set: {
     type: 'VARIABLE_SET',
     tooltip: 'Setzt den Wert einer Variable.',
-    message0: '%{BKY_VARIABLES_SET_TITLE}',
+    message0: '%{BKY_VARIABLE_SET_TITLE}',
     args0: [
       {
         type: 'field_input',
         name: 'NAME',
-        text: '%{BKY_VARIABLES_DEFAULT_NAME}',
+        text: '%{BKY_VARIABLE_DEFAULT_NAME}',
       },
       {
         type: 'input_value',
@@ -278,12 +278,12 @@ const technicalLanguage = {
   BOARD_PIN_TYPE_OUTPUT: 'OUTPUT',
   BOARD_PIN_TYPE_INPUT: 'INPUT',
   BOARD_PIN_TITLE: '%1',
-  VARIABLES_CREATE_TITLE: '%1 %2 %3',
-  VARIABLES_CREATE_TYPE_INT: 'INT',
-  VARIABLES_CREATE_TYPE_BOOL: 'BOOL',
-  VARIABLES_GET_TITLE: '%1',
-  VARIABLES_SET_TITLE: 'set %1 to %2',
-  VARIABLES_DEFAULT_NAME: 'variableName',
+  VARIABLE_CREATE_TITLE: '%1 %2 %3',
+  VARIABLE_CREATE_TYPE_INT: 'INT',
+  VARIABLE_CREATE_TYPE_BOOL: 'BOOL',
+  VARIABLE_GET_TITLE: '%1',
+  VARIABLE_SET_TITLE: 'set %1 to %2',
+  VARIABLE_DEFAULT_NAME: 'variableName',
   CONTROLS_REPEAT_TITLE: 'for (int count = 0; count < %1; count++)',
   LOGIC_BOOLEAN_TRUE: 'true',
   LOGIC_BOOLEAN_FALSE: 'false',
@@ -316,12 +316,12 @@ const easyGermanLanguage = {
   BOARD_PIN_TYPE_OUTPUT: 'Ausgang',
   BOARD_PIN_TYPE_INPUT: 'Eingang',
   BOARD_PIN_TITLE: 'Pin: %1',
-  VARIABLES_CREATE_TITLE: 'Erstelle eine Variable %2 vom Typ %1 mit dem Wert %3',
-  VARIABLES_CREATE_TYPE_INT: 'Zahl',
-  VARIABLES_CREATE_TYPE_BOOL: 'Wahr/Falsch',
-  VARIABLES_GET_TITLE: '%1',
-  VARIABLES_SET_TITLE: 'Setze die Variable %1 auf den Wert %2',
-  VARIABLES_DEFAULT_NAME: 'variableName',
+  VARIABLE_CREATE_TITLE: 'Erstelle eine Variable %2 vom Typ %1 mit dem Wert %3',
+  VARIABLE_CREATE_TYPE_INT: 'Zahl',
+  VARIABLE_CREATE_TYPE_BOOL: 'Wahr/Falsch',
+  VARIABLE_GET_TITLE: '%1',
+  VARIABLE_SET_TITLE: 'Setze die Variable %1 auf den Wert %2',
+  VARIABLE_DEFAULT_NAME: 'variableName',
   LOGIC_BOOLEAN_TRUE: 'wahr',
   LOGIC_BOOLEAN_FALSE: 'falsch',
   LOGIC_OPERATION_AND: 'und',

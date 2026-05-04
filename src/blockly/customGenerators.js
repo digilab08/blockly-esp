@@ -229,7 +229,7 @@ wemosInoGenerator.forBlock['controls_whileUntil'] = function (block, generator) 
 
 // #region variables
 
-wemosInoGenerator.forBlock['variables_create'] = function (block, generator) {
+wemosInoGenerator.forBlock['variable_create'] = function (block, generator) {
   const variableType = block.getFieldValue('TYPE')
   const variableName = block.getFieldValue('NAME')
   const variableValue = generator.valueToCode(block, 'VALUE', orderAtomic) || '0'
@@ -238,12 +238,12 @@ wemosInoGenerator.forBlock['variables_create'] = function (block, generator) {
   return code
 }
 
-wemosInoGenerator.forBlock['variables_get'] = function (block, generator) {
+wemosInoGenerator.forBlock['variable_get'] = function (block, generator) {
   const variableName = block.getFieldValue('NAME')
   return [variableName, orderAtomic]
 }
 
-wemosInoGenerator.forBlock['variables_set'] = function (block, generator) {
+wemosInoGenerator.forBlock['variable_set'] = function (block, generator) {
   const variableName = block.getFieldValue('NAME')
   const variableValue = generator.valueToCode(block, 'VALUE', orderAtomic) || '0'
 

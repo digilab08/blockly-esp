@@ -235,15 +235,15 @@ export const toolbox = {
       contents: [
         {
           kind: 'block',
-          type: 'variables_create',
+          type: 'variable_create',
         },
         {
           kind: 'block',
-          type: 'variables_set',
+          type: 'variable_set',
         },
         {
           kind: 'block',
-          type: 'variables_get',
+          type: 'variable_get',
         },
       ],
     },
