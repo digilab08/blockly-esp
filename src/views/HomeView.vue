@@ -64,6 +64,7 @@ const handleExportFile = async () => {
     return
   }
 
+  //TODO: Own function for the followings
   if (typeof window.showSaveFilePicker === 'function') {
     try {
       const handle = await window.showSaveFilePicker({
@@ -81,8 +82,8 @@ const handleExportFile = async () => {
       await writable.close()
       return
     } catch (error) {
-      if (error?.name === 'AbortError') {
-        return
+      if (error?.name !== 'AbortError') {
+        throw error
       }
     }
   }
@@ -91,8 +92,9 @@ const handleExportFile = async () => {
     const currentFileName = requestFileName()
     downloadFile(JSON.stringify(state), `${currentFileName}.json`, 'application/json')
   } catch (error) {
-    if (error?.message !== 'Name input canceled by user') {
-      console.error(error)
+    if (error?.message != 'Name input canceled by user') {
+      //TODO
+      throw error
     }
   }
 }
@@ -108,7 +110,8 @@ const handleImportFileChange = async (file) => {
     const state = JSON.parse(text)
     loadWorkspaceState(state)
   } catch (error) {
-    console.error(error)
+    //TODO
+    throw error
   }
 }
 
@@ -163,10 +166,10 @@ const handleUploadAction = async (code) => {
 }
 
 const handleRunClick = async () => {
+  isBusy.value = true
   const nextCode = workspaceRef.value?.generateCode?.() ?? ''
   generatedCode.value = nextCode
 
-  isBusy.value = true
   try {
     switch (toolbarValues.value.uploadSelect) {
       case 'code':
@@ -178,7 +181,8 @@ const handleRunClick = async () => {
           downloadFile(nextCode, `${currentFileName}.ino`, 'text/plain')
         } catch (error) {
           if (error?.message !== 'Name input canceled by user') {
-            console.error(error)
+            //TODO
+            throw error
           }
         }
         break
