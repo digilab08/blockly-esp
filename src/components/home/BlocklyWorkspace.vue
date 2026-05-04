@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue'
 import * as Blockly from 'blockly'
 import { blocks } from 'blockly/blocks'
 import { boards } from '@/blockly/boards'
@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 const blocklyContainer = useTemplateRef('blocklyContainer')
-const workspace = ref(null)
+const workspace = shallowRef(null)
 
 const getBoardConfig = (boardName) => boards[boardName] ?? boards.wemos
 
@@ -31,6 +31,7 @@ const applyLanguage = (language) => {
   changeLanguage(language)
 
   const workspaceState = Blockly.serialization.workspaces.save(workspace.value)
+  workspace.value.clear()
   Blockly.serialization.workspaces.load(workspaceState, workspace.value)
 }
 
@@ -52,6 +53,7 @@ const loadState = (state) => {
     return
   }
 
+  workspace.value.clear()
   Blockly.serialization.workspaces.load(state, workspace.value)
 }
 
@@ -111,5 +113,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="blocklyContainer" class="w-full h-[80dvh] overflow-auto"></div>
+  <div ref="blocklyContainer" class="w-full h-[80dvh] overflow-auto text-black"></div>
 </template>
