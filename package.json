@@ -14,6 +14,7 @@
     "logo": "npx pwa-asset-generator src/assets/logo.svg ./public \\ --icon-only \\ --favicon \\ --maskable true \\ --background \"#ffffff\""
   },
   "dependencies": {
+    "@vueuse/core": "^14.3.0",
     "blockly": "^12.5.1",
     "material-icons": "^1.13.14",
     "pinia": "^3.0.3",
