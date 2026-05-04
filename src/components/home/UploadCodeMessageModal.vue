@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
       <div :class="alertClass">
         <h1 class="text-3xl font-bold text-center">{{ stateLabel }}</h1>
       </div>
-      <code class="max-w-full">{{ props.message }}</code>
+      <pre class="whitespace-pre-wrap"><code>{{ props.message }}</code></pre>
     </div>
 
     <form method="dialog" class="modal-backdrop">
