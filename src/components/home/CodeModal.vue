@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
         >
           <img :src="copyIcon" alt="copy" class="h-4" />
         </button>
-        <code>{{ props.code }}</code>
+        <pre class="whitespace-pre-wrap"><code>{{ props.code }}</code></pre>
       </div>
     </div>
 
