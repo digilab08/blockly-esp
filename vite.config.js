@@ -8,6 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/blockly-esp/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -51,6 +52,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        notfound: '404.html',
+      },
+      output: {
+        sanitizeFileName: (name) => {
+          return name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9_.-]/g, '')
+        },
+      },
     },
   },
 })

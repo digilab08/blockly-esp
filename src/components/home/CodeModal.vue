@@ -14,7 +14,7 @@ const open = defineModel({
 })
 
 const dialogRef = useTemplateRef('dialogRef')
-const copyIcon = ref('/images/copy.svg')
+const copyIcon = ref('/blockly-esp/images/copy.svg')
 let resetCopyTimer = null
 
 const syncDialogState = (shouldBeOpen) => {
@@ -38,14 +38,14 @@ const handleDialogClose = () => {
 
 const handleCopyCode = async () => {
   await navigator.clipboard.writeText(props.code)
-  copyIcon.value = '/images/check.svg'
+  copyIcon.value = '/blockly-esp/images/check.svg'
 
   if (resetCopyTimer) {
     clearTimeout(resetCopyTimer)
   }
 
   resetCopyTimer = setTimeout(() => {
-    copyIcon.value = '/images/copy.svg'
+    copyIcon.value = '/blockly-esp/images/copy.svg'
   }, 1000)
 }
 
