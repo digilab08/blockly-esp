@@ -1,5 +1,7 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue'
+import { onBeforeUnmount, onMounted, shallowRef, useTemplateRef, watch } from 'vue'
+import { useStorage, useDebounceFn } from '@vueuse/core'
+
 import * as Blockly from 'blockly'
 import { blocks } from 'blockly/blocks'
 import { boards } from '@/blockly/boards'
@@ -20,6 +22,8 @@ const props = defineProps({
 
 const blocklyContainer = useTemplateRef('blocklyContainer')
 const workspace = shallowRef(null)
+
+const storageState = useStorage('blockly-esp-workspace')
 
 const getBoardConfig = (boardName) => boards[boardName] ?? boards.wemos
 
@@ -71,6 +75,35 @@ defineExpose({
   generateCode,
 })
 
+// Automatically save workspace state to localStorage every 15 seconds
+const saveWorkspaceInLocalStorage = () => {
+  if (workspace.value) {
+    const state = saveState()
+    if (state) {
+      storageState.value = JSON.stringify(state)
+    }
+  }
+}
+
+const debouncedSave = useDebounceFn(
+  () => {
+    saveWorkspaceInLocalStorage()
+  },
+  10000,
+  { maxWait: 15000 },
+)
+
+const onWorkspaceChange = (event) => {
+  if (event.isUiEvent) return
+  debouncedSave()
+}
+
+onBeforeUnmount(() => {
+  if (workspace.value) {
+    saveWorkspaceInLocalStorage()
+  }
+})
+
 onMounted(() => {
   try {
     Blockly.common.defineBlocks(blocks)
@@ -86,6 +119,13 @@ onMounted(() => {
   workspace.value = Blockly.inject(blocklyContainer.value, {
     toolbox,
   })
+
+  workspace.value.addChangeListener(onWorkspaceChange)
+
+  // Load workspace state from localStorage on mount (if available)
+  if (storageState.value) {
+    loadState(JSON.parse(storageState.value))
+  }
 })
 
 watch(
