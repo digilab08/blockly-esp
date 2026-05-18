@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write src/",
-    "logo": "npx pwa-asset-generator src/assets/logo.svg ./public \\ --icon-only \\ --favicon \\ --maskable true \\ --background \"#ffffff\""
+    "logo": "npx pwa-asset-generator src/assets/logo.svg ./public \\ --icon-only \\ --favicon \\ --maskable true \\ --background \"#ffffff\"",
+    "deploy": "npm run build && git push origin --delete gh-pages && git add -f dist && git commit -m \"Temporary Build for gh-pages\" && git subtree push --prefix dist origin gh-pages && git reset HEAD~1"
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",

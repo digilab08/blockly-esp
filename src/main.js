@@ -14,9 +14,6 @@ registerSW({
     // You could show a UI prompt here. Simple approach:
     if (confirm('New version available. Reload now?')) location.reload()
   },
-  onOfflineReady() {
-    console.log('App is ready to work offline.')
-  },
 })
 
 const app = createApp(App)
