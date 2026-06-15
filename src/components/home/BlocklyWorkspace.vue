@@ -104,9 +104,10 @@ onBeforeUnmount(() => {
   }
 })
 
-onMounted(() => {
+onMounted(async () => {
   try {
     Blockly.common.defineBlocks(blocks)
+    Blockly.setLocale(await import(`blockly/msg/de`))
   } catch (error) {
     if (!String(error?.message ?? error).includes('already defined')) {
       throw error
