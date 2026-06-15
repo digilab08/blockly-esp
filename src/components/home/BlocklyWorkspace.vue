@@ -4,7 +4,7 @@ import { useStorage, useDebounceFn } from '@vueuse/core'
 
 import * as Blockly from 'blockly'
 import { blocks } from 'blockly/blocks'
-import { boards } from '@/blockly/boards'
+import boards from '@/blockly/boards.json'
 import { changeLanguage, setPinBlock } from '@/blockly/customBlocks'
 import { InoCodeGenerator } from '@/blockly/customGenerators'
 import { toolbox } from '@/blockly/toolbox'

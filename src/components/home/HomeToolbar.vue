@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { boards } from '@/blockly/boards'
+import boards from '@/blockly/boards.json'
 import { shallowRef } from 'vue'
 
 const model = defineModel({

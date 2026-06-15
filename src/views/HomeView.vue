@@ -1,6 +1,6 @@
 <script setup>
 import { ref, useTemplateRef } from 'vue'
-import { boards } from '@/blockly/boards'
+import boards from '@/blockly/boards.json'
 import BlocklyWorkspace from '@/components/home/BlocklyWorkspace.vue'
 import CodeModal from '@/components/home/CodeModal.vue'
 import HomeToolbar from '@/components/home/HomeToolbar.vue'
