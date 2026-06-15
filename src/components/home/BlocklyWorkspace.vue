@@ -6,7 +6,7 @@ import * as Blockly from 'blockly'
 import { blocks } from 'blockly/blocks'
 import { boards } from '@/blockly/boards'
 import { changeLanguage, setPinBlock } from '@/blockly/customBlocks'
-import { wemosInoGenerator } from '@/blockly/customGenerators'
+import { InoCodeGenerator } from '@/blockly/customGenerators'
 import { toolbox } from '@/blockly/toolbox'
 
 const props = defineProps({
@@ -16,7 +16,7 @@ const props = defineProps({
   },
   board: {
     type: String,
-    default: 'wemos',
+    default: boards,
   },
 })
 
@@ -66,7 +66,7 @@ const generateCode = () => {
     return ''
   }
 
-  return wemosInoGenerator.workspaceToCode(workspace.value)
+  return InoCodeGenerator.workspaceToCode(workspace.value)
 }
 
 defineExpose({
