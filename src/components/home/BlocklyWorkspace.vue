@@ -16,7 +16,7 @@ const props = defineProps({
   },
   board: {
     type: String,
-    default: boards,
+    default: Object.keys(boards)[0],
   },
 })
 
@@ -25,7 +25,7 @@ const workspace = shallowRef(null)
 
 const storageState = useStorage('blockly-esp-workspace')
 
-const getBoardConfig = (boardName) => boards[boardName] ?? boards.wemos
+const getBoardConfig = (boardName) => boards[boardName] ?? boards[Object.keys(boards)[0]]
 
 const applyLanguage = (language) => {
   if (!workspace.value) {

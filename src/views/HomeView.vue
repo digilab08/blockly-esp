@@ -10,7 +10,7 @@ import UploadCodeMessageModal from '@/components/home/UploadCodeMessageModal.vue
 
 const toolbarValues = ref({
   language: 'easyGermanLanguage',
-  board: 'wemos',
+  board: Object.keys(boards)[0],
   uploadSelect: 'file',
 })
 
@@ -138,7 +138,7 @@ const handleUploadAction = async (code) => {
   isLoadingModalOpen.value = true
 
   try {
-    const boardConfig = boards[toolbarValues.value.board] ?? boards.wemos
+    const boardConfig = boards[toolbarValues.value.board] ?? boards[Object.keys(boards)[0]]
     const response = await fetch('http://localhost:8080', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

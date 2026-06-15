@@ -1,16 +1,12 @@
 <script setup>
 import { computed } from 'vue'
-
-const DEFAULT_VALUES = {
-  language: 'easyGermanLanguage',
-  board: 'wemos',
-  uploadSelect: 'file',
-}
+import { boards } from '@/blockly/boards'
+import { shallowRef } from 'vue'
 
 const model = defineModel({
   default: () => ({
     language: 'easyGermanLanguage',
-    board: 'wemos',
+    board: Object.keys(boards)[0],
     uploadSelect: 'file',
   }),
 })
@@ -24,34 +20,29 @@ const props = defineProps({
 
 const emit = defineEmits(['import-file-change', 'export-file', 'run-click'])
 
-const mergedValues = computed(() => ({
-  ...DEFAULT_VALUES,
-  ...(model.value ?? {}),
-}))
-
 const updateValues = (patch) => {
   model.value = {
-    ...mergedValues.value,
+    ...(model.value ?? {}),
     ...patch,
   }
 }
 
 const languageValue = computed({
-  get: () => mergedValues.value.language,
+  get: () => model.value?.language,
   set: (value) => {
     updateValues({ language: value })
   },
 })
 
 const boardValue = computed({
-  get: () => mergedValues.value.board,
+  get: () => model.value?.board,
   set: (value) => {
     updateValues({ board: value })
   },
 })
 
 const uploadSelectValue = computed({
-  get: () => mergedValues.value.uploadSelect,
+  get: () => model.value?.uploadSelect,
   set: (value) => {
     updateValues({ uploadSelect: value })
   },
@@ -66,6 +57,8 @@ const handleImportFileChange = (event) => {
 const handleExportFileClick = () => {
   emit('export-file')
 }
+
+const boardsList = shallowRef(Object.keys(boards))
 
 const handleRunButtonClick = () => {
   emit('run-click')
@@ -95,8 +88,9 @@ const handleRunButtonClick = () => {
 
     <!-- Board Selection -->
     <select v-model="boardValue" class="select select-bordered" title="Verwendeter Microcontroller">
-      <option value="wemos">Wemos</option>
-      <option value="esp32">ESP32</option>
+      <option v-for="board in boardsList" :key="board" :value="board">
+        {{ boards[board].name }}
+      </option>
     </select>
 
     <!-- Run Code -->

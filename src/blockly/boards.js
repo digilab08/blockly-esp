@@ -1,9 +1,11 @@
 export const boards = {
   wemos: {
+    name: 'Wemos',
     id: 'esp8266:esp8266:d1_mini',
     pins: ['LED_BUILTIN', 'D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'A0'],
   },
   esp32: {
+    name: 'ESP32',
     id: 'esp32:esp32:esp32',
     pins: [
       'LED_BUILTIN',
